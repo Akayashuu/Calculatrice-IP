@@ -10,7 +10,6 @@ class reseau {
     private $firstAddr;
     private $lastAddr;
     private $nbHote;
-    private $object;
 
 
     public function __construct($cidr, $ip) {
@@ -23,7 +22,6 @@ class reseau {
         $this->firstAddr = $this->getFirstAddress();
         $this->lastAddr = $this->getLastAddress();
         $this->nbHote = $this->hoteNb();
-        $this->object = $this->getObjectIp();
     }
     
     public function verifyIp() {
@@ -33,21 +31,6 @@ class reseau {
     public function verifyCidr() {
         return $this->cidr >= 1 && $this->cidr <= 30;
     }
-    
-    private function getObjectIp() {
-        return [
-            "cidr" => $this->cidr,
-            "mask" => $this->mask,
-            "addrReseau" => $this->addrReseau,
-            "addrBc" => $this->addrBc,
-            "firstAddr" => $this->firstAddr,
-            "lastAddr" => $this->lastAddr,
-            "nbHote" => $this->nbHote,
-                ];
-    }
-    
-    
-    
     
     private function bin2dec($bin, $nb = 0) {
         $bin = strrev($bin);
